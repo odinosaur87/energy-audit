@@ -1,0 +1,21 @@
+{
+  "short_name": "EnergyAudit",
+  "name": "Energy & Mood Audit",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3756/3756608.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3756/3756608.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#020617",
+  "background_color": "#020617",
+  "orientation": "portrait"
+}
