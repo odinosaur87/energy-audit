@@ -7,11 +7,11 @@ import {
 import { THEMES, APP_VERSION, TRANSLATIONS, PIXEL_TRANSLATIONS } from './constants';
 import { Log, Stats, Theme, Language, AppStyle } from './types';
 
-// Components
-import { Dashboard } from './components/Dashboard';
-import { LogHistory } from './components/LogHistory';
-import { LogEntry } from './components/LogEntry';
-import { Preferences } from './components/Preferences';
+// Components - Now imported from root
+import { Dashboard } from './Dashboard';
+import { LogHistory } from './LogHistory';
+import { LogEntry } from './LogEntry';
+import { Preferences } from './Preferences';
 
 const STORAGE_KEY_LOGS = 'energy_audit_logs_local';
 const STORAGE_KEY_PREFS = 'energy_audit_prefs_local';
