@@ -46,7 +46,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats, logs, onDelete, onV
         </div>
       </div>
 
-      {/* Weekly Energy Summary */}
+      {/* Weekly Energy Summary (Only shows if data exists) */}
       {(stats.energizers.length > 0 || stats.drainers.length > 0) && (
         <div className="grid grid-cols-1 gap-4">
           {stats.energizers.length > 0 && (
@@ -86,29 +86,31 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats, logs, onDelete, onV
               </div>
             </div>
           )}
-
-          {/* Recent History List */}
-          <div>
-            <div className="flex justify-between items-center mb-3">
-              <h3 className={`${theme.textSub} ${labelFont} ml-1`}>{t('latestActivity')}</h3>
-              <button onClick={onViewHistory} className={`${theme.accent} text-xs font-medium hover:opacity-80 flex items-center gap-1 bg-white/5 px-3 py-1 ${isPixel ? 'rounded-none border border-current font-pixel-body' : 'rounded-full'}`}>
-                {t('viewAll')} <ArrowRight size={12} />
-              </button>
-            </div>
-            
-            {logs.length === 0 ? (
-              <div className={`text-center py-12 ${theme.bgCard} ${theme.border} ${isPixel ? 'border-4 border-dashed rounded-none' : 'rounded-2xl border border-dashed'}`}>
-                <Activity className={`mx-auto ${theme.textSub} mb-2 opacity-50`} size={32} />
-                <p className={`${theme.textSub} ${isPixel ? 'font-pixel-body' : ''}`}>{t('noLogs')}</p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {recentDisplayLogs.map(log => (
-                  <LogItem key={log.id} log={log} onDelete={onDelete} theme={theme} lang={lang} t={t} isPixel={isPixel} />
-                ))}
-              </div>
-            )}
-          </div>
         </div>
-      );
-    };
+      )}
+
+      {/* Recent History List (Always Visible) */}
+      <div>
+        <div className="flex justify-between items-center mb-3">
+          <h3 className={`${theme.textSub} ${labelFont} ml-1`}>{t('latestActivity')}</h3>
+          <button onClick={onViewHistory} className={`${theme.accent} text-xs font-medium hover:opacity-80 flex items-center gap-1 bg-white/5 px-3 py-1 ${isPixel ? 'rounded-none border border-current font-pixel-body' : 'rounded-full'}`}>
+            {t('viewAll')} <ArrowRight size={12} />
+          </button>
+        </div>
+        
+        {logs.length === 0 ? (
+          <div className={`text-center py-12 ${theme.bgCard} ${theme.border} ${isPixel ? 'border-4 border-dashed rounded-none' : 'rounded-2xl border border-dashed'}`}>
+            <Activity className={`mx-auto ${theme.textSub} mb-2 opacity-50`} size={32} />
+            <p className={`${theme.textSub} ${isPixel ? 'font-pixel-body' : ''}`}>{t('noLogs')}</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {recentDisplayLogs.map(log => (
+              <LogItem key={log.id} log={log} onDelete={onDelete} theme={theme} lang={lang} t={t} isPixel={isPixel} />
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
